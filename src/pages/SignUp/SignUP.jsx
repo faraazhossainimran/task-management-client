@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 
 const SignUP = () => {
     const {user, createUser, updateUserProfile} = useAuth()
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
@@ -14,7 +15,7 @@ const SignUP = () => {
         console.log(data),
         createUser(data.email, data.password).then(
             updateUserProfile(data.name, data.userphoto).then(
-                res => console.log(res.user)
+                navigate("/dashboard")
             )
         )
       )

@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-center p-10 text-[#ccc]">
+      <footer className="footer footer-center p-10 bg-base-200">
         <aside>
           <p className="font-bold">
            <h1 className="text-2xl"> Task Manager. <br /></h1>

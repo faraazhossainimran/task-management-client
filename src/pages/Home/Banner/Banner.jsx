@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Banner = () => {
+  const {user} = useAuth()
   return (
     <div>
       <div
-        className="hero md:h-[600px]"
+        className="hero md:h-[650px]"
         style={{
           backgroundImage:
             "url(https://i.ibb.co/rF1hR7q/kelly-sikkema-LM17x-Cof-KA0-unsplash.jpg)",
@@ -18,7 +20,8 @@ const Banner = () => {
             <p className="mb-5">
             Empower Productivity, Master Efficiency: Your Tasks, Our Priority.
             </p>
-            <button className="btn btn-primary"><Link to={"/login"}>Let's Explore</Link></button>
+            {user? <button className="btn btn-primary"><Link to={"/dashboard"}>Let's Explore</Link></button> : <button className="btn btn-primary"><Link to={"/login"}>Let's Explore</Link></button>}
+            {/* <button className="btn btn-primary"><Link to={"/login"}>Let's Explore</Link></button> */}
           </div>
         </div>
       </div>

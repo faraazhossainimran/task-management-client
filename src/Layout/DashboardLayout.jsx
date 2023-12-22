@@ -1,11 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../components/NavBar/NavBar'
+import NavBarDashboard from '../components/NavBarDashboard/NavBarDashboard'
 
 const DashboardLayout = () => {
     return (
         <div>
-            <NavBar></NavBar>
+            <NavBarDashboard></NavBarDashboard>
             <Outlet></Outlet>
         </div>
     )
