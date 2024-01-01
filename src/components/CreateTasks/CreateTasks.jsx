@@ -46,7 +46,7 @@ const CreateTasks = ({ tasks, setTasks }) => {
       {/* modal start */}
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <div className="text-center mb-4">
-        <h1 className="text-3xl">Hello, {user ? user.email : ""}</h1>
+        <h1 className="text-3xl">Hello, {user && user?.displayName || user?.email || "User"}</h1>
       </div>
       <div className="">
       <button

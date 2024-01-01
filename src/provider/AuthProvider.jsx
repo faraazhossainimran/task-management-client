@@ -12,7 +12,6 @@ import {
 import { createContext, useEffect, useState } from "react"
 import app from "../firebase/firebase.config"
 
-
 export const AuthContext = createContext()
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
@@ -46,11 +45,11 @@ const AuthProvider = ({children}) => {
       return signOut(auth)
     }
   
-    const updateUserProfile = (name, photo) => {
+    const updateUserProfile = (displayName, photoURL) => {
       setLoading(true)
       return updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: photo,
+        displayName: displayName,
+        photoURL: photoURL,
       })
     }
   

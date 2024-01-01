@@ -11,14 +11,17 @@ const SignUP = () => {
         handleSubmit,
         reset
       } = useForm()
-      const onSubmit = (data) => (
-        console.log(data),
-        createUser(data.email, data.password).then(
-            updateUserProfile(data.name, data.userphoto).then(
-                navigate("/dashboard")
-            )
-        )
-      )
+      const onSubmit = (data) => {
+        console.log("email:", data.email, "displayName", data.displayName, "photoURL", data.photoURL);
+      
+        createUser(data?.email, data?.password)
+          .then(() => updateUserProfile(data?.displayName, data?.photoURL))
+          .then(() => navigate("/dashboard"))
+          .catch((error) => {
+            // Handle any errors that occurred during user creation or profile update
+            console.error("Error:", error);
+          });
+      };
   return (
     <div>
       <div className="hero bg-base-200 py-32">
@@ -31,7 +34,7 @@ const SignUP = () => {
                   <span className="label-text">Name</span>
                 </label>
                 <input
-                {...register("name")}
+                {...register("displayName")}
                   type="text"
                   placeholder="Name"
                   className="input input-bordered"
@@ -43,7 +46,7 @@ const SignUP = () => {
                   <span className="label-text">PhotoURL</span>
                 </label>
                 <input
-                {...register("userPhoto")}
+                {...register("photoURL")}
                   type="text"
                   placeholder="PhotoURL"
                   className="input input-bordered"

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-    const {user, signIn} = useAuth()
+    const {user, signIn, signInWithGoogle} = useAuth()
     const navigate = useNavigate()
     const {
         register,
@@ -18,6 +18,15 @@ const Login = () => {
             console.log(res.user);
         })
       )
+      const handleGoogleLogin = () => {
+        signInWithGoogle()
+          .then(() => {
+            navigate("/dashboard");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
   return (
     <div>
       <div className="hero bg-base-200 py-32">
@@ -52,7 +61,17 @@ const Login = () => {
                 <input type="submit" value="Log in" className="btn btn-primary"></input>
               </div>
             </form>
-            <p>Don't have any account? <Link to={"/signup"}>SignUp</Link></p>
+            <p className="text-center">Don't have any account? <Link to={"/signup"}>SignUp</Link></p>
+            <div className="divider mx-8">OR</div>
+              <div className="form-control mx-8 mb-8" onClick={handleGoogleLogin}>
+                <button className="btn">
+                  <img
+                    className="w-[37px]"
+                    src="https://i.ibb.co/dBTSL19/icons8-google-48.png"
+                  />
+                  Login with Google
+                </button>
+              </div>
           </div>
         </div>
       </div>
