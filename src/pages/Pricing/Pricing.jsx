@@ -2,7 +2,7 @@ import React from "react";
 
 const Pricing = () => {
   return (
-<div className="hero min-h-screen flex items-center justify-center">
+<div className="hero py-32 flex items-center justify-center">
 <div className="container mx-auto flex gap-6 mt-12">
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
